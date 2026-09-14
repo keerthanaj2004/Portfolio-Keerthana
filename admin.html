@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CMS Admin Portal | Keerthana J Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+  <!-- ADMIN DASHBOARD LAYOUT (Direct Access, No Password Required) -->
+  <div class="admin-layout" id="adminLayout" style="display: flex;">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-brand">
+        <div class="sidebar-logo">KJ</div>
+        <div>
+          <div class="sidebar-title">Keerthana J</div>
+          <div class="sidebar-subtitle">CMS Control Center</div>
+        </div>
+      </div>
+
+      <ul class="sidebar-nav">
+        <li>
+          <a class="sidebar-link active" id="nav-tab-overview" data-tab="tab-overview" onclick="switchTab('tab-overview')">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Overview</span>
+          </a>
+        </li>
+        <li>
+          <a class="sidebar-link" id="nav-tab-theme" data-tab="tab-theme" onclick="switchTab('tab-theme')">
+            <i class="fa-solid fa-palette"></i>
+            <span>Theme &amp; Colors</span>
+          </a>
+        </li>
+        <li>
+          <a class="sidebar-link" id="nav-tab-personal" data-tab="tab-personal" onclick="switchTab('tab-personal')">
+            <i class="fa-solid fa-user-astronaut"></i>
+            <span>Hero &amp; Profile</span>
+          </a>
+        </li>
+        <li>
+          <a class="sidebar-link" id="nav-tab-experience" data-tab="tab-experience" onclick="switchTab('tab-experience')">
+            <i class="fa-solid fa-briefcase"></i>
+            <span>Work Experience</span>
+          </a>
+        </li>
+        <li>
+          <a class="sidebar-link" id="nav-tab-projects" data-tab="tab-projects" onclick="switchTab('tab-projects')">
+            <i class="fa-solid fa-laptop-code"></i>
+            <span>Projects Showcase</span>
+          </a>
+        </li>
+        <li>
+          <a class="sidebar-link" id="nav-tab-skills" data-tab="tab-skills" onclick="switchTab('tab-skills')">
+            <i class="fa-solid fa-brain"></i>
+            <span>Skills Matrix</span>
+          </a>
+        </li>
+        <li>
+          <a class="sidebar-link" id="nav-tab-education" data-tab="tab-education" onclick="switchTab('tab-education')">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span>Education &amp; Certs</span>
+          </a>
+        </li>
+        <li>
+          <a class="sidebar-link" id="nav-tab-scalable" data-tab="tab-scalable" onclick="switchTab('tab-scalable')">
+            <i class="fa-solid fa-cubes-stacked"></i>
+            <span>Blogs &amp; Testimonials</span>
+          </a>
+        </li>
+        <li>
+          <a class="sidebar-link" id="nav-tab-inquiries" data-tab="tab-inquiries" onclick="switchTab('tab-inquiries')">
+            <i class="fa-solid fa-inbox"></i>
+            <span>Inquiries</span>
+          </a>
+        </li>
+        <li>
+          <a class="sidebar-link" id="nav-tab-firebase" data-tab="tab-firebase" onclick="switchTab('tab-firebase')">
+            <i class="fa-solid fa-database"></i>
+            <span>Firebase &amp; Backup</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <a href="index.html" target="_blank" class="btn btn-secondary btn-sm" style="width: 100%;">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          <span>View Live Site</span>
+        </a>
+        <button id="logoutBtn" class="btn btn-outline btn-sm" style="width: 100%; border-color: var(--purple-primary); color: var(--purple-primary);">
+          <i class="fa-solid fa-rotate-right"></i>
+          <span>Reset Session</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <main class="admin-main">
+      <!-- Topbar -->
+      <div class="admin-topbar">
+        <div>
+          <h1 class="admin-page-title" id="adminSectionHeading">Dashboard Overview</h1>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">Manage real-time content without rebuilding code.</p>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <div id="syncBadge" class="sync-status-badge local">
+            <span class="pulse-dot"></span>
+            <span>Local &amp; Realtime Ready</span>
+          </div>
+          <a href="index.html" class="btn btn-primary btn-sm">
+            <i class="fa-solid fa-eye"></i> Live Portfolio
+          </a>
+        </div>
+      </div>
+
+      <!-- TAB 1: OVERVIEW -->
+      <div class="admin-tab-content" id="tab-overview">
+        <div class="admin-stats-ribbon">
+          <div class="admin-stat-card">
+            <div class="admin-stat-icon"><i class="fa-solid fa-briefcase"></i></div>
+            <div>
+              <div class="admin-stat-val" id="statExpCount">1</div>
+              <div class="admin-stat-lbl">Experience Entries</div>
+            </div>
+          </div>
+
+          <div class="admin-stat-card">
+            <div class="admin-stat-icon"><i class="fa-solid fa-laptop-code"></i></div>
+            <div>
+              <div class="admin-stat-val" id="statProjCount">2</div>
+              <div class="admin-stat-lbl">Featured Projects</div>
+            </div>
+          </div>
+
+          <div class="admin-stat-card">
+            <div class="admin-stat-icon"><i class="fa-solid fa-brain"></i></div>
+            <div>
+              <div class="admin-stat-val" id="statSkillCount">5</div>
+              <div class="admin-stat-lbl">Skill Categories</div>
+            </div>
+          </div>
+
+          <div class="admin-stat-card">
+            <div class="admin-stat-icon"><i class="fa-solid fa-award"></i></div>
+            <div>
+              <div class="admin-stat-val" id="statAchCount">3</div>
+              <div class="admin-stat-lbl">Honors &amp; Pubs</div>
+            </div>
+          </div>
+
+          <div class="admin-stat-card">
+            <div class="admin-stat-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
+            <div>
+              <div class="admin-stat-val" id="statMsgCount">0</div>
+              <div class="admin-stat-lbl">Contact Inquiries</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-panel-card">
+          <h3 class="panel-title" style="margin-bottom: 12px;">Quick Start Guide</h3>
+          <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 20px;">
+            Welcome Keerthana! This CMS allows you to dynamically edit any section of your portfolio and change color themes.
+            Every form change you save will instantly update your portfolio without modifying HTML/CSS or rebuilding your project.
+          </p>
+          <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+            <button class="btn btn-primary btn-sm" onclick="switchTab('tab-theme')"><i class="fa-solid fa-palette"></i> Customize Theme &amp; Colors</button>
+            <button class="btn btn-secondary btn-sm" onclick="switchTab('tab-personal')"><i class="fa-solid fa-pen"></i> Edit Profile Info</button>
+            <button class="btn btn-secondary btn-sm" onclick="switchTab('tab-projects')"><i class="fa-solid fa-plus"></i> Add New Project</button>
+            <button class="btn btn-secondary btn-sm" onclick="switchTab('tab-skills')"><i class="fa-solid fa-tags"></i> Update Tech Skills</button>
+            <button class="btn btn-secondary btn-sm" onclick="switchTab('tab-firebase')"><i class="fa-solid fa-plug"></i> Connect Firebase Cloud</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB: THEME & COLOR PALETTE -->
+      <div class="admin-tab-content" id="tab-theme" style="display: none;">
+        <!-- Preset Palettes -->
+        <div class="admin-panel-card">
+          <div class="panel-header">
+            <h3 class="panel-title">Curated Preset Palettes</h3>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">Click any preset to preview &amp; customize</span>
+          </div>
+          <div class="theme-presets-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px;">
+            <button type="button" class="preset-card-btn" onclick="applyThemePreset('purple-white')" style="background: white; border: 2px solid #7C3AED; border-radius: 14px; padding: 14px; cursor: pointer; text-align: left; transition: all 0.2s;">
+              <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+                <span style="width: 22px; height: 22px; border-radius: 50%; background: #7C3AED; display: inline-block;"></span>
+                <span style="width: 22px; height: 22px; border-radius: 50%; background: #A855F7; display: inline-block;"></span>
+                <span style="width: 22px; height: 22px; border-radius: 50%; background: #F3E8FF; border: 1px solid #ddd; display: inline-block;"></span>
+              </div>
+              <strong style="display: block; font-size: 0.92rem; color: #1F1B2D;">Royal Violet &amp; White</strong>
+              <small style="color: #6B6480;">Original vibrant theme</small>
+            </button>
+
+            <button type="button" class="preset-card-btn" onclick="applyThemePreset('midnight-purple')" style="background: white; border: 1px solid var(--border-subtle); border-radius: 14px; padding: 14px; cursor: pointer; text-align: left; transition: all 0.2s;">
+              <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+                <span style="width: 22px; height: 22px; border-radius: 50%; background: #9333EA; display: inline-block;"></span>
+                <span style="width: 22px; height: 22px; border-radius: 50%; background: #C084FC; display: inline-block;"></span>
+                <span style="width: 22px; height: 22px; border-radius: 50%; background: #18112C; display: inline-block;"></span>
+              </div>
+              <strong style="display: block; font-size: 0.92rem; color: #1F1B2D;">Midnight Amethyst</strong>
+              <small style="color: #6B6480;">Deep purple night theme</small>
+            </button>
+
+            <button type="button" class="preset-card-btn" onclick="applyThemePreset('ocean-blue')" style="background: white; border: 1px solid var(--border-subtle); border-radius: 14px; padding: 14px; cursor: pointer; text-align: left; transition: all 0.2s;">
+              <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+                <span style="width: 22px; height: 22px; border-radius: 50%; background: #0284C7; display: inline-block;"></span>
+                <span style="width: 22px; height: 22px; border-radius: 50%; background: #38BDF8; display: inline-block;"></span>
+                <span style="width: 22px; height: 22px; border-radius: 50%; background: #E0F2FE; border: 1px solid #ddd; display: inline-block;"></span>
+              </div>
+              <strong style="display: block; font-size: 0.92rem; color: #1F1B2D;">Oceanic Cyan</strong>
+              <small style="color: #6B6480;">Cool tech blue &amp; sky</small>
+            </button>
+
+            <button type="button" class="preset-card-btn" onclick="applyThemePreset('cyber-emerald')" style="background: white; border: 1px solid var(--border-subtle); border-radius: 14px; padding: 14px; cursor: pointer; text-align: left; transition: all 0.2s;">
+              <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+                <span style="width: 22px; height: 22px; border-radius: 50%; background: #059669; display: inline-block;"></span>
+                <span style="width: 22px; height: 22px; border-radius: 50%; background: #34D399; display: inline-block;"></span>
+                <span style="width: 22px; height: 22px; border-radius: 50%; background: #D1FAE5; border: 1px solid #ddd; display: inline-block;"></span>
+              </div>
+              <strong style="display: block; font-size: 0.92rem; color: #1F1B2D;">Cyber Emerald</strong>
+              <small style="color: #6B6480;">Fresh green &amp; white</small>
+            </button>
+
+            <button type="button" class="preset-card-btn" onclick="applyThemePreset('crimson-rose')" style="background: white; border: 1px solid var(--border-subtle); border-radius: 14px; padding: 14px; cursor: pointer; text-align: left; transition: all 0.2s;">
+              <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+                <span style="width: 22px; height: 22px; border-radius: 50%; background: #E11D48; display: inline-block;"></span>
+                <span style="width: 22px; height: 22px; border-radius: 50%; background: #FB7185; display: inline-block;"></span>
+                <span style="width: 22px; height: 22px; border-radius: 50%; background: #FFE4E6; border: 1px solid #ddd; display: inline-block;"></span>
+              </div>
+              <strong style="display: block; font-size: 0.92rem; color: #1F1B2D;">Crimson Rose</strong>
+              <small style="color: #6B6480;">Vibrant magenta / ruby</small>
+            </button>
+
+            <button type="button" class="preset-card-btn" onclick="applyThemePreset('electric-indigo')" style="background: white; border: 1px solid var(--border-subtle); border-radius: 14px; padding: 14px; cursor: pointer; text-align: left; transition: all 0.2s;">
+              <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+                <span style="width: 22px; height: 22px; border-radius: 50%; background: #4F46E5; display: inline-block;"></span>
+                <span style="width: 22px; height: 22px; border-radius: 50%; background: #818CF8; display: inline-block;"></span>
+                <span style="width: 22px; height: 22px; border-radius: 50%; background: #EEF2FF; border: 1px solid #ddd; display: inline-block;"></span>
+              </div>
+              <strong style="display: block; font-size: 0.92rem; color: #1F1B2D;">Electric Indigo</strong>
+              <small style="color: #6B6480;">Modern deep indigo</small>
+            </button>
+
+            <button type="button" class="preset-card-btn" onclick="applyThemePreset('sunset-amber')" style="background: white; border: 1px solid var(--border-subtle); border-radius: 14px; padding: 14px; cursor: pointer; text-align: left; transition: all 0.2s;">
+              <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+                <span style="width: 22px; height: 22px; border-radius: 50%; background: #D97706; display: inline-block;"></span>
+                <span style="width: 22px; height: 22px; border-radius: 50%; background: #FBBF24; display: inline-block;"></span>
+                <span style="width: 22px; height: 22px; border-radius: 50%; background: #FEF3C7; border: 1px solid #ddd; display: inline-block;"></span>
+              </div>
+              <strong style="display: block; font-size: 0.92rem; color: #1F1B2D;">Sunset Amber</strong>
+              <small style="color: #6B6480;">Warm golden amber</small>
+            </button>
+          </div>
+        </div>
+
+        <!-- Custom Color Inputs & Live Preview -->
+        <div class="admin-panel-card">
+          <div class="panel-header">
+            <h3 class="panel-title">Custom Palette Color Picker</h3>
+            <button class="btn btn-primary btn-sm" onclick="saveThemeCustomizer()">
+              <i class="fa-solid fa-floppy-disk"></i> Apply &amp; Save Theme
+            </button>
+          </div>
+
+          <form id="themeCustomizerForm">
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label">Primary Brand Accent Color</label>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                  <input type="color" id="th_primary_picker" value="#7C3AED" style="width: 50px; height: 44px; border: none; border-radius: 8px; cursor: pointer;" oninput="syncColorInput('th_primary', this.value)">
+                  <input type="text" id="th_primary" class="form-input" value="#7C3AED" oninput="syncColorPicker('th_primary_picker', this.value)">
+                </div>
+                <span class="form-help">Buttons, icons, borders, and gradient starting tones.</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Hover / Darker Tone Color</label>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                  <input type="color" id="th_hover_picker" value="#6D28D9" style="width: 50px; height: 44px; border: none; border-radius: 8px; cursor: pointer;" oninput="syncColorInput('th_hover', this.value)">
+                  <input type="text" id="th_hover" class="form-input" value="#6D28D9" oninput="syncColorPicker('th_hover_picker', this.value)">
+                </div>
+                <span class="form-help">Button hover states and deep accents.</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Light Accent / Gradient End Color</label>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                  <input type="color" id="th_light_picker" value="#A855F7" style="width: 50px; height: 44px; border: none; border-radius: 8px; cursor: pointer;" oninput="syncColorInput('th_light', this.value)">
+                  <input type="text" id="th_light" class="form-input" value="#A855F7" oninput="syncColorPicker('th_light_picker', this.value)">
+                </div>
+                <span class="form-help">Glowing gradient highlights and glowing badge borders.</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Soft Surface / Badge Background</label>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                  <input type="color" id="th_soft_picker" value="#F3E8FF" style="width: 50px; height: 44px; border: none; border-radius: 8px; cursor: pointer;" oninput="syncColorInput('th_soft', this.value)">
+                  <input type="text" id="th_soft" class="form-input" value="#F3E8FF" oninput="syncColorPicker('th_soft_picker', this.value)">
+                </div>
+                <span class="form-help">Subtle background tint for skill chips and tags.</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Body Background Color</label>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                  <input type="color" id="th_bgBody_picker" value="#FAF8FF" style="width: 50px; height: 44px; border: none; border-radius: 8px; cursor: pointer;" oninput="syncColorInput('th_bgBody', this.value)">
+                  <input type="text" id="th_bgBody" class="form-input" value="#FAF8FF" oninput="syncColorPicker('th_bgBody_picker', this.value)">
+                </div>
+                <span class="form-help">Overall canvas color (e.g. #FAF8FF for clean white or #0F0A1C for dark mode).</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Card Background Color</label>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                  <input type="color" id="th_bgCard_picker" value="#FFFFFF" style="width: 50px; height: 44px; border: none; border-radius: 8px; cursor: pointer;" oninput="syncColorInput('th_bgCard', this.value)">
+                  <input type="text" id="th_bgCard" class="form-input" value="#FFFFFF" oninput="syncColorPicker('th_bgCard_picker', this.value)">
+                </div>
+                <span class="form-help">Card surfaces and modal backgrounds.</span>
+              </div>
+            </div>
+
+            <!-- Live Preview Card in Admin -->
+            <div style="margin-top: 24px; padding: 24px; border-radius: 18px; border: 1px solid var(--border-subtle); background: var(--admin-bg);" id="themePreviewBox">
+              <h4 style="margin-bottom: 12px; font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Live Palette Preview</h4>
+              <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center;">
+                <button type="button" class="btn btn-primary btn-sm" id="previewBtnPrimary" style="pointer-events: none;">Primary Button</button>
+                <button type="button" class="btn btn-secondary btn-sm" id="previewBtnSecondary" style="pointer-events: none;">Secondary Button</button>
+                <span class="tech-tag" id="previewTag1">FastAPI</span>
+                <span class="tech-tag" id="previewTag2">Gemini AI</span>
+                <span style="font-weight: 700; font-size: 1.1rem; color: #7C3AED;" id="previewText">Heading Preview</span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- TAB 2: HERO & PERSONAL INFO -->
+      <div class="admin-tab-content" id="tab-personal" style="display: none;">
+        <div class="admin-panel-card">
+          <div class="panel-header">
+            <h3 class="panel-title">Personal &amp; Hero Details</h3>
+            <button class="btn btn-primary btn-sm" onclick="savePersonalForm()">
+              <i class="fa-solid fa-floppy-disk"></i> Save Changes
+            </button>
+          </div>
+
+          <form id="personalForm">
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label">Full Name</label>
+                <input type="text" id="p_name" class="form-input" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Primary Role / Title</label>
+                <input type="text" id="p_role" class="form-input" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Location</label>
+                <input type="text" id="p_location" class="form-input">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input type="email" id="p_email" class="form-input">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Phone Number</label>
+                <input type="text" id="p_phone" class="form-input">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">LinkedIn URL</label>
+                <input type="url" id="p_linkedin" class="form-input">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">GitHub URL</label>
+                <input type="url" id="p_github" class="form-input">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Avatar Image URL or Relative Path</label>
+                <input type="text" id="p_avatar" class="form-input">
+                <span class="form-help">Default: assets/avatar.jpg</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Hero Subtitle / Tagline</label>
+              <input type="text" id="p_subtitle" class="form-input">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Professional Summary</label>
+              <textarea id="p_summary" class="form-textarea" rows="4"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Custom Resume Download Link (Leave blank for built-in viewer)</label>
+              <input type="text" id="p_resumeUrl" class="form-input" placeholder="https://drive.google.com/... or #resume-modal">
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- TAB 3: WORK EXPERIENCE -->
+      <div class="admin-tab-content" id="tab-experience" style="display: none;">
+        <!-- Add New Experience Form -->
+        <div class="admin-panel-card">
+          <div class="panel-header">
+            <h3 class="panel-title" id="expFormHeading">Add Work Experience</h3>
+            <button class="btn btn-primary btn-sm" onclick="saveExperienceForm()">
+              <i class="fa-solid fa-plus"></i> Save Experience
+            </button>
+          </div>
+
+          <form id="experienceForm">
+            <input type="hidden" id="exp_id">
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label">Job Role / Position *</label>
+                <input type="text" id="exp_role" class="form-input" placeholder="e.g. Software Development Engineer (AI/ML)" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Company Name *</label>
+                <input type="text" id="exp_company" class="form-input" placeholder="e.g. Anugraha Exceed Pvt. Ltd." required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Location</label>
+                <input type="text" id="exp_location" class="form-input" placeholder="e.g. Bengaluru, India">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Period / Duration *</label>
+                <input type="text" id="exp_period" class="form-input" placeholder="e.g. Oct 2024 – Present" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Technologies (Comma separated)</label>
+              <input type="text" id="exp_tech" class="form-input" placeholder="Java (Spring Boot), Python (FastAPI/Flask), PostgreSQL, Redis, RAG">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Bullet Points &amp; Metrics (One point per line)</label>
+              <textarea id="exp_bullets" class="form-textarea" rows="4" placeholder="Designed and developed scalable RESTful APIs...&#10;Automated 65% of customer support queries..."></textarea>
+            </div>
+          </form>
+        </div>
+
+        <!-- Experience List -->
+        <div class="admin-panel-card">
+          <h3 class="panel-title" style="margin-bottom: 20px;">Current Experience Entries</h3>
+          <div id="adminExpTableContainer">
+            <!-- Table dynamically populated -->
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 4: PROJECTS SHOWCASE -->
+      <div class="admin-tab-content" id="tab-projects" style="display: none;">
+        <!-- Add Project Form -->
+        <div class="admin-panel-card">
+          <div class="panel-header">
+            <h3 class="panel-title" id="projFormHeading">Add Project</h3>
+            <button class="btn btn-primary btn-sm" onclick="saveProjectForm()">
+              <i class="fa-solid fa-plus"></i> Save Project
+            </button>
+          </div>
+
+          <form id="projectForm">
+            <input type="hidden" id="proj_id">
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label">Project Title *</label>
+                <input type="text" id="proj_title" class="form-input" placeholder="e.g. Observe AI" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Category *</label>
+                <input type="text" id="proj_category" class="form-input" placeholder="e.g. AI/ML &amp; LLMs" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Tagline / Short Hook</label>
+                <input type="text" id="proj_tagline" class="form-input" placeholder="e.g. AI Monitoring &amp; Evaluation Platform">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Impact Metrics Highlight</label>
+                <input type="text" id="proj_metrics" class="form-input" placeholder="e.g. 60% Debugging Time Saved • 80% Manual Review Reduced">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">GitHub Repository URL</label>
+                <input type="url" id="proj_github" class="form-input" placeholder="https://github.com/...">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Live Demo Application URL</label>
+                <input type="text" id="proj_live" class="form-input" placeholder="https://...">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Project Preview Image URL</label>
+                <input type="text" id="proj_image" class="form-input" placeholder="assets/observe_ai.jpg">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Technologies (Comma separated)</label>
+                <input type="text" id="proj_tech" class="form-input" placeholder="Python, FastAPI, React, LangChain, Gemini, Docker">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Comprehensive Description</label>
+              <textarea id="proj_desc" class="form-textarea" rows="3" placeholder="Explain the project's goal, architecture, and value..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Technical Bullet Points (One per line)</label>
+              <textarea id="proj_bullets" class="form-textarea" rows="3" placeholder="Built an AI observability platform for LLM applications...&#10;Developed an AI Judge pipeline using Gemini..."></textarea>
+            </div>
+          </form>
+        </div>
+
+        <!-- Projects List -->
+        <div class="admin-panel-card">
+          <h3 class="panel-title" style="margin-bottom: 20px;">Existing Projects</h3>
+          <div id="adminProjTableContainer"></div>
+        </div>
+      </div>
+
+      <!-- TAB 5: SKILLS MATRIX -->
+      <div class="admin-tab-content" id="tab-skills" style="display: none;">
+        <div class="admin-panel-card">
+          <div class="panel-header">
+            <h3 class="panel-title">Add / Edit Skills Category</h3>
+            <button class="btn btn-primary btn-sm" onclick="saveSkillsForm()">
+              <i class="fa-solid fa-check"></i> Save Category
+            </button>
+          </div>
+
+          <form id="skillsForm">
+            <div class="form-group">
+              <label class="form-label">Category Name *</label>
+              <input type="text" id="skill_cat_name" class="form-input" placeholder="e.g. Backend Development, Generative AI, Cloud Infrastructure" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Skills List (Comma separated) *</label>
+              <textarea id="skill_list" class="form-textarea" rows="3" placeholder="FastAPI, Spring Boot, PyTorch, LangChain, Redis, Docker" required></textarea>
+              <span class="form-help">Separate individual skills with commas.</span>
+            </div>
+          </form>
+        </div>
+
+        <div class="admin-panel-card">
+          <h3 class="panel-title" style="margin-bottom: 20px;">Current Skill Categories</h3>
+          <div id="adminSkillsContainer"></div>
+        </div>
+      </div>
+
+      <!-- TAB 6: EDUCATION & ACHIEVEMENTS -->
+      <div class="admin-tab-content" id="tab-education" style="display: none;">
+        <!-- Add Education -->
+        <div class="admin-panel-card">
+          <div class="panel-header">
+            <h3 class="panel-title">Education Records</h3>
+            <button class="btn btn-primary btn-sm" onclick="saveEducationForm()">
+              <i class="fa-solid fa-plus"></i> Add Education
+            </button>
+          </div>
+
+          <form id="educationForm">
+            <input type="hidden" id="edu_id">
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label">Degree / Certificate *</label>
+                <input type="text" id="edu_degree" class="form-input" placeholder="Bachelor of Technology in Computer Science" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Institution Name *</label>
+                <input type="text" id="edu_institution" class="form-input" placeholder="Alliance University" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Location</label>
+                <input type="text" id="edu_location" class="form-input" placeholder="Bengaluru, Karnataka">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Period / Duration</label>
+                <input type="text" id="edu_period" class="form-input" placeholder="Sept 2021 – Jun 2025">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Score / Percentage / CGPA</label>
+                <input type="text" id="edu_score" class="form-input" placeholder="83.5%">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Key Highlights / Specialization</label>
+                <input type="text" id="edu_highlights" class="form-input" placeholder="Distributed Systems &amp; Machine Learning">
+              </div>
+            </div>
+          </form>
+
+          <div id="adminEduListContainer" style="margin-top: 24px;"></div>
+        </div>
+
+        <!-- Add Achievement/Cert -->
+        <div class="admin-panel-card">
+          <div class="panel-header">
+            <h3 class="panel-title">Certifications &amp; Achievements</h3>
+            <button class="btn btn-primary btn-sm" onclick="saveAchievementForm()">
+              <i class="fa-solid fa-plus"></i> Add Achievement
+            </button>
+          </div>
+
+          <form id="achievementForm">
+            <input type="hidden" id="ach_id">
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label">Title *</label>
+                <input type="text" id="ach_title" class="form-input" placeholder="AWS Certified Cloud Practitioner" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Category</label>
+                <input type="text" id="ach_category" class="form-input" placeholder="Certification, Leadership, Publication">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Issuer / Organization</label>
+                <input type="text" id="ach_issuer" class="form-input" placeholder="Amazon Web Services">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Year</label>
+                <input type="text" id="ach_year" class="form-input" placeholder="2024">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Verification / Paper Link</label>
+                <input type="text" id="ach_link" class="form-input" placeholder="https://...">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Icon FontAwesome Class</label>
+                <input type="text" id="ach_icon" class="form-input" placeholder="fa-brands fa-aws or fa-solid fa-award">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Brief Description</label>
+              <textarea id="ach_desc" class="form-textarea" rows="2"></textarea>
+            </div>
+          </form>
+
+          <div id="adminAchListContainer" style="margin-top: 24px;"></div>
+        </div>
+      </div>
+
+      <!-- TAB 7: SCALABILITY (BLOGS & TESTIMONIALS) -->
+      <div class="admin-tab-content" id="tab-scalable" style="display: none;">
+        <!-- Add Blog Form -->
+        <div class="admin-panel-card">
+          <div class="panel-header">
+            <h3 class="panel-title">Add Blog / Technical Article (Future Scalability)</h3>
+            <button class="btn btn-primary btn-sm" onclick="saveBlogForm()">
+              <i class="fa-solid fa-plus"></i> Save Article
+            </button>
+          </div>
+
+          <form id="blogForm">
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label">Article Title *</label>
+                <input type="text" id="blog_title" class="form-input" placeholder="e.g. Fine-Tuning Open Source LLMs for Production" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Category</label>
+                <input type="text" id="blog_category" class="form-input" placeholder="AI Engineering, Architecture">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Publication Date</label>
+                <input type="text" id="blog_date" class="form-input" placeholder="e.g. Mar 2026">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Read Time</label>
+                <input type="text" id="blog_readTime" class="form-input" placeholder="e.g. 5 min read">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Summary / Teaser</label>
+              <textarea id="blog_summary" class="form-textarea" rows="2"></textarea>
+            </div>
+          </form>
+
+          <div id="adminBlogListContainer" style="margin-top: 24px;"></div>
+        </div>
+
+        <!-- Add Testimonial -->
+        <div class="admin-panel-card">
+          <div class="panel-header">
+            <h3 class="panel-title">Recommendations &amp; Testimonials</h3>
+            <button class="btn btn-primary btn-sm" onclick="saveTestimonialForm()">
+              <i class="fa-solid fa-plus"></i> Add Testimonial
+            </button>
+          </div>
+
+          <form id="testimonialForm">
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label">Author Name *</label>
+                <input type="text" id="test_author" class="form-input" placeholder="e.g. Jane Doe" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Role &amp; Company</label>
+                <input type="text" id="test_role" class="form-input" placeholder="e.g. VP of Engineering at Tech Corp">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Quote / Recommendation Text *</label>
+              <textarea id="test_quote" class="form-textarea" rows="3" required></textarea>
+            </div>
+          </form>
+
+          <div id="adminTestimonialListContainer" style="margin-top: 24px;"></div>
+        </div>
+      </div>
+
+      <!-- TAB 8: INQUIRIES & MESSAGES -->
+      <div class="admin-tab-content" id="tab-inquiries" style="display: none;">
+        <div class="admin-panel-card">
+          <div class="panel-header">
+            <h3 class="panel-title">Visitor Messages &amp; Inquiries</h3>
+            <span class="badge" id="inquiriesCountBadge">0 messages</span>
+          </div>
+
+          <div id="inquiriesTableContainer">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 9: FIREBASE & BACKUP SETTINGS -->
+      <div class="admin-tab-content" id="tab-firebase" style="display: none;">
+        <div class="admin-panel-card">
+          <div class="panel-header">
+            <h3 class="panel-title">Firebase Real-time Cloud Connection</h3>
+            <button class="btn btn-primary btn-sm" onclick="saveFirebaseConfig()">
+              <i class="fa-solid fa-cloud-arrow-up"></i> Save &amp; Connect Firebase
+            </button>
+          </div>
+
+          <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 24px;">
+            Connect your free Google Firebase Firestore database. When enabled, your portfolio will sync two-way in real-time across all devices without touching any code!
+          </p>
+
+          <form id="firebaseForm">
+            <div class="form-group" style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px;">
+              <input type="checkbox" id="fb_enabled" style="width: 20px; height: 20px; accent-color: var(--purple-primary);">
+              <label for="fb_enabled" style="font-weight: 700; cursor: pointer;">Enable Firebase Cloud Firestore Real-time Sync</label>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label">Firebase API Key</label>
+                <input type="text" id="fb_apiKey" class="form-input" placeholder="AIzaSy...">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Auth Domain</label>
+                <input type="text" id="fb_authDomain" class="form-input" placeholder="your-app.firebaseapp.com">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Project ID</label>
+                <input type="text" id="fb_projectId" class="form-input" placeholder="your-portfolio-id">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Storage Bucket</label>
+                <input type="text" id="fb_storageBucket" class="form-input" placeholder="your-app.appspot.com">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Messaging Sender ID</label>
+                <input type="text" id="fb_messagingSenderId" class="form-input" placeholder="123456789">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">App ID</label>
+                <input type="text" id="fb_appId" class="form-input" placeholder="1:123456789:web:abcdef">
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- Data Backup & Reset Operations -->
+        <div class="admin-panel-card">
+          <h3 class="panel-title" style="margin-bottom: 16px;">Data Backup &amp; Reset</h3>
+          <p style="color: var(--text-muted); margin-bottom: 20px;">
+            Export complete JSON backup of your portfolio, import previously saved data, or reset to original resume seed state.
+          </p>
+
+          <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+            <button class="btn btn-secondary btn-sm" onclick="exportDataBackup()">
+              <i class="fa-solid fa-download"></i> Export Portfolio JSON
+            </button>
+
+            <label class="btn btn-secondary btn-sm" style="margin: 0; cursor: pointer;">
+              <i class="fa-solid fa-upload"></i> Import JSON Backup
+              <input type="file" id="importFileInput" accept=".json" style="display: none;" onchange="importDataBackup(event)">
+            </label>
+
+            <button class="btn btn-outline btn-sm" style="border-color: var(--danger); color: var(--danger);" onclick="confirmResetDefaults()">
+              <i class="fa-solid fa-rotate-left"></i> Reset to Resume Defaults
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="admin-toast" id="adminToast">
+    <i class="fa-solid fa-circle-check" style="color: #34D399; font-size: 1.2rem;"></i>
+    <span id="toastMessage">Changes saved successfully!</span>
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+
+  <!-- Application Logic -->
+  <script src="js/data.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
